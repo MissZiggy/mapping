@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppBar from './AppBar';
 import SimpleMap from './SimpleMap';
 import './map.css';
+import {importMarkers} from './importMarkers.js';
 
 class App extends Component {
 
@@ -52,6 +53,11 @@ class App extends Component {
     this.setState({ markers: [] })
   }
 
+  onFileDrop = (files, event) => {
+    console.log('File Dropped!', files, event)
+    this.setState({ markers: importMarkers })
+  }
+
   render() {
     return (
       <div id="app">
@@ -59,6 +65,7 @@ class App extends Component {
           onSuggestionSelected={this.onSuggestionSelected}
           onUndoMarker={this.onUndoMarker}
           onClearMarkers={this.onClearMarkers}
+          onFileDrop={this.onFileDrop}
         />
         <SimpleMap markers={this.state.markers}/>
       </div>

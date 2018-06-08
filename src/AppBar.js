@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-
+import ReactFileDrop from './ReactFileDrop'
 import Autocomplete from './Autocomplete';
 
 const styles = {
@@ -23,7 +23,7 @@ const styles = {
 };
 
 function ButtonAppBar(props) {
-  const { classes, onSuggestionSelected, onUndoMarker, onClearMarkers } = props;
+  const { classes, onSuggestionSelected, onUndoMarker, onClearMarkers, onFileDrop } = props;
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -31,6 +31,7 @@ function ButtonAppBar(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>
             Mapping Experiments
           </Typography>
+          <ReactFileDrop onFileDrop={onFileDrop}/>
           <IconButton className={classes.button} aria-label="Clear Markers" onClick={onClearMarkers}>
             <Icon>clear</Icon>
           </IconButton>          
